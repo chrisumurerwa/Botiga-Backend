@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const schema=mongoose.Schema;
 
 const contactSchema = new schema({
-    name:{
+    status:{
         type:String,
         required:true,
     },
@@ -10,7 +10,15 @@ const contactSchema = new schema({
         type:String,
         required:true,
     },
-    message1:{
+    message:{
+        type:String,
+        required:true,
+    },
+    phone:{
+        type:String,
+        required:true,
+    },
+    subject:{
         type:String,
         required:true,
     }
