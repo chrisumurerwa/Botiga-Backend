@@ -1,13 +1,15 @@
 import express from 'express';
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-import router from './Routes/IndexRoute.js';
+import MainRouter from './Routes/IndexRoute.js';
+import bodyParser from 'body-parser';
 dotenv.config();
 const port=process.env.PORT||3000
 const db_user=process.env.DB_USER;
 const db_name=process.env.DB_NAME;
 const db_pass=process.env.DB_PASS;
 const app=express();
+
 // app.get('/getresult',(req,res)=>{
 //     res.send("this is my first project of node js")
 // })
@@ -16,10 +18,11 @@ const app=express();
 // app.listen(PORT,()=>{
 //     console.log(   `the app is running on the port ${PORT}`);
 // });
-
+app.use(bodyParser.json());
 app.use(express.json());
-app.use('/api',router);
-const  dbUri=`mongodb+srv://${db_user}:${db_pass}@cluster0.uqqgv.mongodb.net/botiga`;
+app.use('/',MainRouter);
+const  dbUri=`mongodb+srv://christineumurerwa5:WqoQZjYqti0GC6bh@cluster0.uqqgv.mongodb.net/ `;
+mongoose.set("strictQuery", false);
 mongoose.connect(dbUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -1,6 +1,15 @@
-import  ContactRoute from './ContactRoute.js';
-import express from"express";
-const router = express.Router();
-router.use("/contact",ContactRoute);
+import configureMulter from '../utilis/multer.js';
+import  router from './ContactRoute.js';
+import ProductRouter from './ProductRoute.js';
+import routers from './ProductRoute.js';
 
-export default router;
+import express from"express";
+
+const MainRouter = express.Router();
+
+//const upload = configureMulter();
+
+// MainRouter.use("/contact",);
+MainRouter.use("/product",ProductRouter);
+
+export default MainRouter;
